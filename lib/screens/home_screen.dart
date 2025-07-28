@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/data/categories.dart';
 import 'package:my_flutter_app/data/dummy_books.dart';
+import 'package:my_flutter_app/screens/blog_list_screen.dart';
+import 'package:my_flutter_app/screens/ecommerce_home.dart';
+import 'package:my_flutter_app/screens/products_screen.dart';
 import 'package:my_flutter_app/widgets/book_card.dart';
 import '../data/dummy_trains.dart';
 import '../widgets/train_card.dart';
@@ -8,8 +11,8 @@ import 'train_detail_screen.dart';
 import 'cu_history_screen.dart';
 import 'education_info_screen.dart';
 
-class TrainListScreen extends StatelessWidget {
-  const TrainListScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,17 @@ class TrainListScreen extends StatelessWidget {
                   fontSize: 24,
                 ),
               ),
+            ),
+            ListTile(
+              leading: Icon(Icons.add_chart_sharp),
+              title: Text('Ecommerce Site'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => EcommerceHome()),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.train),
@@ -57,6 +71,17 @@ class TrainListScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => EducationInfoScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.article),
+              title: Text('Blog List'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => BlogListScreen()),
                 );
               },
             ),
@@ -145,6 +170,25 @@ class TrainListScreen extends StatelessWidget {
             SizedBox(height: 20),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.teal,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'Product List',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_tree_sharp),
+            label: 'Table',
+          ),
+        ],
       ),
     );
   }

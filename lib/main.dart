@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/train_list_screen.dart';
+import 'package:my_flutter_app/screens/home_screen.dart';
 
 void main() {
   runApp(CUTrainScheduleApp());
@@ -13,7 +13,8 @@ class CUTrainScheduleApp extends StatelessWidget {
     return MaterialApp(
       title: 'CU Train Schedule',
       theme: ThemeData(primarySwatch: Colors.teal),
-      home: TrainListScreen(),
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
     );
   }
 }

@@ -1,0 +1,5 @@
+3. Clean and Rebuild App
+Run:
+flutter clean
+flutter pub get
+flutter run
