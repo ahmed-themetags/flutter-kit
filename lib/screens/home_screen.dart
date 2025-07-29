@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => BlogListScreen()),
+                  MaterialPageRoute(builder: (_) => LudoGameApp()),
                 );
               },
             ),
