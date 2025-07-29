@@ -3,3 +3,9 @@ Run:
 flutter clean
 flutter pub get
 flutter run
+
+
+To Export APK:
+flutter clean
+flutter pub get
+flutter build apk --release
