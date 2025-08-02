@@ -11,10 +11,11 @@ class CUTrainScheduleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'CU Train Schedule',
+      title: 'Flutter UI UIKids',
       theme: ThemeData(primarySwatch: Colors.teal),
+      color: Colors.teal.shade200,
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: HomeScreen()
     );
   }
 }

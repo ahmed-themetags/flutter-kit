@@ -26,7 +26,6 @@ class _EcommerceHomeState extends State<EcommerceHome> {
                 blurRadius: 4,
               ),
             ],
-
           ),
         ),
         centerTitle: true,
@@ -195,6 +194,82 @@ class _EcommerceHomeState extends State<EcommerceHome> {
               // End of Product List
               //---------------------------------------------
 
+
+              //---------------------------------------------
+              // List View Product List
+              //---------------------------------------------
+              SizedBox(height: 30),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: Text('List View Example', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              ),
+              ListView(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                children: [
+                  _customListTile('assets/images/1.jpeg', 'Ahmed Ullah', 'ahmed@gmail.com'),
+                  Divider(),
+                  _customListTile('assets/images/2.jpeg', 'Rashid Ali', 'rashid@gmail.com'),
+                  Divider(),
+                  _customListTile('assets/images/3.jpeg', 'Product 3', 'Description 3'),
+                  Divider(),
+                  Text('System 2'),
+                  Divider(),
+                  Divider(),
+
+
+                  ListTile(
+                    leading: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.blue, width: 2),
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/2.jpeg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    title: Text(
+                      'Rashid Ali',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(
+                      'rashid@gmail.com',
+                      style: TextStyle(fontSize: 15, color: Colors.grey[700]),
+                    ),
+                  ),
+                  Divider(),
+
+
+                  // System 2
+                  ListTile(
+                    leading: Image.asset('assets/images/1.jpeg', width: 50, height: 50, fit: BoxFit.cover),
+                    title: Text('Ahmed Ullah'),
+                    subtitle: Text('ahmed@gmail.com'),
+                  ),
+                  Divider(),
+
+                  ListTile(
+                    leading: Image.asset('assets/images/2.jpeg', width: 50, height: 50, fit: BoxFit.cover),
+                    title: Text('Rashid Ali'),
+                    subtitle: Text('rashid@gmailcom'),
+                  ),
+                  Divider(),
+
+                  ListTile(
+                    leading: Image.asset('assets/images/3.jpeg', width: 50, height: 50, fit: BoxFit.cover),
+                    title: Text('Product 3'),
+                    subtitle: Text('Description 3'),
+                  ),
+                  Divider(),
+                ],
+              ),
+              //---------------------------------------------
+              // End of List View Product List
+              //---------------------------------------------
+
               // 🔸 Product Images in Horizontal Scroll
               // SingleChildScrollView(
               //   child: Column(
@@ -295,14 +370,14 @@ final List<String> productLists = [
   'assets/images/12.png',
   'assets/images/13.webp',
   'assets/images/14.webp',
-  'assets/images/15.webp',
-  'assets/images/16.webp',
-  'assets/images/23.webp',
-  'assets/images/24.webp',
-  'assets/images/25.webp',
-  'assets/images/17.webp',
-  'assets/images/18.webp',
-  'assets/images/19.webp',
+  // 'assets/images/15.webp',
+  // 'assets/images/16.webp',
+  // 'assets/images/23.webp',
+  // 'assets/images/24.webp',
+  // 'assets/images/25.webp',
+  // 'assets/images/17.webp',
+  // 'assets/images/18.webp',
+  // 'assets/images/19.webp',
   'assets/images/20.webp',
   'assets/images/21.webp',
   'assets/images/22.webp',
@@ -313,7 +388,50 @@ final List<String> productLists = [
   'assets/images/30.webp',
 ];
 
-
+Widget _customListTile(String imagePath, String title, String subtitle) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+    child: Row(
+      children: [
+        Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: Colors.blueGrey, width: 2),
+            image: DecorationImage(
+              image: AssetImage(imagePath),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 4),
+              Text(
+                subtitle,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.grey[700],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
 
 

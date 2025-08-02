@@ -1,195 +1,155 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/data/categories.dart';
-import 'package:my_flutter_app/data/dummy_books.dart';
-import 'package:my_flutter_app/screens/blog_list_screen.dart';
 import 'package:my_flutter_app/screens/ecommerce_home.dart';
-import 'package:my_flutter_app/screens/products_screen.dart';
-import 'package:my_flutter_app/widgets/book_card.dart';
-import '../data/dummy_trains.dart';
-import '../widgets/train_card.dart';
-import 'train_detail_screen.dart';
-import 'cu_history_screen.dart';
-import 'education_info_screen.dart';
+import 'package:my_flutter_app/screens/home_screen_2.dart';
+import 'package:my_flutter_app/screens/ui/appbar_screen.dart';
+import 'package:my_flutter_app/screens/ui/card_screen.dart';
+import 'package:my_flutter_app/screens/ui/container_screen.dart';
+import 'package:my_flutter_app/screens/ui/grid_view_screen.dart';
+import 'package:my_flutter_app/screens/ui/list_view_builder_screen.dart';
+import 'package:my_flutter_app/screens/ui/list_view_screen.dart';
+import 'package:my_flutter_app/screens/ui/scrollable_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('CU Train Schedule')),
-      backgroundColor: Colors.green.shade200,
-      drawer: Drawer(
-        backgroundColor: Colors.green.shade200,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Colors.teal),
-              child: Text(
-                'CU Train App Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.add_chart_sharp),
-              title: Text('Ecommerce Site'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => EcommerceHome()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.train),
-              title: Text('Train Schedule'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.history_edu),
-              title: Text('CU History'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => CUHistoryScreen()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.school),
-              title: Text('Education Info'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => EducationInfoScreen()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.article),
-              title: Text('Blog List'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => LudoGameApp()),
-                );
-              },
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.green,
+          title: Text('Flutter UI Kids',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold
+              )
+          ),
         ),
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.only(bottom: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // 🔹 Horizontal scrollable categories
-            SizedBox(height: 10),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                children: categories.map((category) {
-                  return Container(
-                    margin: EdgeInsets.only(right: 10),
-                    child: Card(
-                      color: Colors.teal,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 10,
-                        ),
-                        child: Text(
-                          category,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+
+        body: SingleChildScrollView(
+          child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  Center(
+                    child: const Text(
+                      'Flutter UI Kids By Ahmed',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold
                       ),
                     ),
-                  );
-                }).toList(),
-              ),
-            ),
+                  ),
+                  SizedBox(height: 10),
+                  Divider(),
+                  SizedBox(height: 10),
 
-            SizedBox(height: 10),
 
-            // 🔹 Train List
-            ...List.generate(dummyTrains.length, (i) {
-              final train = dummyTrains[i];
-              return TrainCard(
-                train: train,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TrainDetailScreen(train: train),
+                  // Scrollable Row Start
+                  SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        GridView.builder(
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          physics: NeverScrollableScrollPhysics(),
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 15,
+                            // mainAxisExtent: 200,
+                          ),
+                          itemCount: topics.length,
+                          itemBuilder: (context, index) {
+                            var topic = topics[index]!;
+
+                            return InkWell(
+                              onTap: () {
+                                Navigator.push(context,MaterialPageRoute(
+                                    builder: (context) => topic['screen']),
+                                );
+                              },
+                              child: Card(
+                                color: Colors.orange.shade700,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Center(
+                                    child: Text(topic['name']!,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                      ),
+                                    )
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
-                  );
-                },
-              );
-            }),
+                  ),
+                  // Scrollable Row Start
 
-            SizedBox(height: 20),
-
-            // 🔹 Book Section Title
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                "Recommended Books",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ],
               ),
             ),
-
-            // 🔹 Book Grid
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                children: dummyBooks.map((book) {
-                  return SizedBox(
-                    width: MediaQuery.of(context).size.width / 3 - 15,
-                    child: BookCard(book: book),
-                  );
-                }).toList(),
-              ),
-            ),
-
-            SizedBox(height: 20),
-          ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.teal,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Product List',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_tree_sharp),
-            label: 'Table',
-          ),
-        ],
-      ),
+        ),
     );
   }
 }
+
+
+List<Map<String, dynamic>> topics = [
+  {
+    'name': 'Scrollable Row',
+    'screen': ScrollableRowScreen(),
+  },
+  {
+    'name': 'Grid View Builder',
+    'screen': GridViewScreen(), // Replace with actual screen widget
+  },
+  {
+    'name': 'Container',
+    'screen': ContainerScreen(),
+  },
+  {
+    'name': 'List View',
+    'screen': ListViewScreen(), // Replace with actual screen widget
+  },
+  {
+    'name': 'List View Builder',
+    'screen': ListViewBuilderScreen(), // Replace with actual screen widget
+  },
+  {
+    'name': 'App Bar',
+    'screen': AppbarScreen(), // Replace with actual screen widget
+  },
+  {
+    'name': 'Card',
+    'screen': CardScreen(), // Replace with actual screen widget
+  },
+  {
+    'name': 'Stack & Positioned',
+    'screen': CardScreen(), // Replace with actual screen widget
+  },
+  {
+    'name': 'Home 2',
+    'screen': Home2Screen(), // Replace with actual screen widget
+  },
+  {
+    'name': 'Ecommerce',
+    'screen': EcommerceHome(), // Replace with actual screen widget
+  },
+  {
+    'name': 'Ecommerce',
+    'screen': EcommerceHome(), // Replace with actual screen widget
+  },
+];
