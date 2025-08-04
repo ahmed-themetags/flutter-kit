@@ -6,11 +6,15 @@ import 'package:my_flutter_app/screens/ui/appbar_screen.dart';
 import 'package:my_flutter_app/screens/ui/card_screen.dart';
 import 'package:my_flutter_app/screens/ui/contact_screen.dart';
 import 'package:my_flutter_app/screens/ui/container_screen.dart';
+import 'package:my_flutter_app/screens/ui/curve_navigation_screen.dart';
+import 'package:my_flutter_app/screens/ui/drawer_screen.dart';
 import 'package:my_flutter_app/screens/ui/expanded_screen.dart';
 import 'package:my_flutter_app/screens/ui/grid_view_screen.dart';
 import 'package:my_flutter_app/screens/ui/list_view_builder_screen.dart';
 import 'package:my_flutter_app/screens/ui/list_view_screen.dart';
+import 'package:my_flutter_app/screens/ui/my_carousel_slider.dart';
 import 'package:my_flutter_app/screens/ui/scrollable_screen.dart';
+import 'package:my_flutter_app/screens/ui/stateful_widgets_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -130,6 +134,18 @@ List<Map<String
     'screen': GridViewScreen(), // Replace with actual screen widget
   },
   {
+    'name': 'Carousel Slider',
+    'screen': MyCarouselSlider(),
+  },
+  {
+    'name': 'Curve Navigation',
+    'screen': CurveNavigationScreen(),
+  },
+  {
+    'name': 'Drawer',
+    'screen': DrawerScreen(),
+  },
+  {
     'name': 'Container',
     'screen': ContainerScreen(),
   },
@@ -156,6 +172,10 @@ List<Map<String
   {
     'name': 'Card',
     'screen': CardScreen(), // Replace with actual screen widget
+  },
+  {
+    'name': 'Stateful Widget',
+    'screen': StatefulWidgetsScreen(), // Replace with actual screen widget
   },
   {
     'name': 'Stack & Positioned',

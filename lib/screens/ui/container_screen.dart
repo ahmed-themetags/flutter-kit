@@ -53,6 +53,77 @@ class ContainerScreen extends StatelessWidget {
                     SingleChildScrollView(
                       child: Column(
                         children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Scrollable Container", style: TextStyle(fontSize: 18, color: Colors.orange),),
+                          ),
+
+                          Container(
+                            width: 400,
+                            height: 350,
+                            decoration: BoxDecoration(
+                              color: Colors.orange, // 🔵 Background color behind the image
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/background.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                              border: Border.all(
+                                color: Colors.grey[300]!,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.85), // 🔵 Overlay for content readability
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    GridView.builder(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: 10,
+                                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 10,
+                                        mainAxisSpacing: 10,
+                                      ),
+                                      itemBuilder: (context, index) {
+                                        return Container(
+                                          margin: EdgeInsets.all(5),
+                                          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.grey[300]!,
+                                              width: 2,
+                                            ),
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(10),
+                                          ),
+                                          child: Image.asset(
+                                            productLists[index],
+                                            height: 120,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+
+
+
+                          SizedBox(
+                            height: 50,
+                          ),
+
+                          Text("Shape and Border Radius not work same column", style: TextStyle(fontSize: 18),),
+
                           Container(
                             width: 200,
                             height: 100,
@@ -219,4 +290,16 @@ class ContainerScreen extends StatelessWidget {
   }
 }
 
+final List<String> productLists = [
+  'assets/images/ecommerce.jpg',
+  'assets/images/banner1.jpeg',
+  'assets/images/banner2.jpeg',
+  'assets/images/banner3.jpeg',
+  'assets/images/8.png',
+  'assets/images/9.png',
+  'assets/images/11.png',
+  'assets/images/12.png',
+  'assets/images/6.png',
+  'assets/images/n.png',
+];
 

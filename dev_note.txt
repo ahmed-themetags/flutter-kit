@@ -9,3 +9,162 @@ To Export APK:
 flutter clean
 flutter pub get
 flutter build apk --release
+
+
+
+Library
+==================
+//for bottom navigation bar
+https://fluttergems.dev/bottom-navigation-bar/
+
+🔥 Awesome Flutter UI Packages & Tools to Learn
+1. Navigation & Bottom Bars
+curved_navigation_bar — Cool animated curved bottom nav bar.
+
+salomon_bottom_bar — Stylish animated bottom navigation with fluid effects.
+
+convex_bottom_bar — Convex-shaped bottom navigation.
+
+persistent_bottom_nav_bar — Persistent bottom navigation with lots of customization.
+
+2. Carousels & Sliders
+carousel_slider — Image and widget carousel with infinite scroll.
+
+flutter_swiper — Swipeable cards with cool effects.
+
+smooth_page_indicator — Fancy page indicators for carousels.
+
+3. Animations & Transitions
+animations (by Flutter team) — Prebuilt animations like fade-through, shared axis.
+
+rive — Interactive, vector animations with artboard control.
+
+lottie — Integrate beautiful JSON-based animations from LottieFiles.
+
+animated_text_kit — Animated text effects like typewriter, fade, scale.
+
+4. Layouts & UI Components
+flutter_staggered_grid_view — Create Pinterest-style staggered grids.
+
+flutter_layout_grid — CSS grid-inspired layout system.
+
+sticky_headers — Make headers sticky during scroll.
+
+flutter_slidable — Swipeable list items with slide actions.
+
+5. Dialogs, Modals & Popups
+awesome_dialog — Beautiful customizable dialogs.
+
+flushbar — Custom snackbars with animation and action buttons.
+
+modal_bottom_sheet — Customizable modal bottom sheets with animations.
+
+6. Buttons & Inputs
+flutter_awesome_buttons — Collection of fancy buttons.
+
+flutter_rounded_date_picker — Modern rounded date picker dialog.
+
+7. Charts & Graphs
+fl_chart — Beautiful and highly customizable charts.
+
+syncfusion_flutter_charts — Professional charting package (free community license).
+
+8. Themes & Styling
+dynamic_theme — Easily switch app themes dynamically.
+
+google_fonts — Use Google Fonts easily with Flutter.
+
+9. Special Effects
+shimmer — Loading shimmer placeholders.
+
+glassmorphism — Frosted glass UI effect.
+
+flutter_blurhash — BlurHash placeholders for images.
+
+Bonus: Helpful Tools & Resources
+Flutter DevTools — Inspect UI and performance.
+
+Flutter Widget of the Week (YouTube) — Learn one widget at a time.
+
+Flutter Widget Catalog — Official comprehensive widget list.
+
+🚀 More Awesome Flutter UI Packages & Tools
+10. Advanced Animations & Effects
+animated_background — Create animated particle backgrounds.
+
+flutter_spinkit — A collection of loading spinners with fancy animations.
+
+confetti — Celebrate user actions with confetti animations.
+
+liquid_progress_indicator — Cool liquid fill progress indicators.
+
+flutter_shake_animated_widget — Shake animation for error or attention.
+
+11. Custom Scroll & Lists
+infinite_scroll_pagination — Easy infinite scroll & pagination UI.
+
+scrollable_positioned_list — Scroll list to specific index with animation.
+
+grouped_list — Group list items by header with sticky grouping.
+
+12. Cards & Layouts
+flutter_neumorphic — Neumorphic design widgets for soft UI.
+
+clay_containers — Another neumorphic design container with depth control.
+
+slimy_card — Animated cards with slimy (gooey) effect.
+
+glassmorphism_ui — Glass morphism UI widgets.
+
+13. Image & Media
+photo_view — Zoomable and panable images.
+
+cached_network_image — Efficient network image caching with placeholders.
+
+video_player — Official Flutter video player with controls.
+
+flutter_svg — Render SVG images natively.
+
+14. Typography & Text Effects
+auto_size_text — Text widget that automatically adjusts font size.
+
+gradient_text — Apply gradients on your text.
+
+neon_widgets — Neon style glowing text and buttons.
+
+15. Form & Input Enhancements
+flutter_form_builder — Build complex forms easily with validation.
+
+intl_phone_field — International phone number input with country code picker.
+
+flutter_tags — Input chips/tag widgets for forms.
+
+16. Maps & Location
+flutter_map — OpenStreetMap based map widget.
+
+google_maps_flutter — Official Google Maps widget.
+
+location — Get user location with permissions handling.
+
+17. Miscellaneous Cool Widgets
+percent_indicator — Linear and circular percent indicators.
+
+flip_card — Flip card animations for showing front and back.
+
+animated_bottom_navigation_bar — Customizable animated bottom nav.
+
+curved_drawer — Cool curved side drawer menu.
+
+🎯 Suggested Learning Approach for UI Mastery
+Start with core layout widgets: Rows, Columns, Stack, ListView, GridView.
+
+Move to animated widgets: AnimatedContainer, AnimatedSwitcher.
+
+Explore popular UI packages: curved_navigation_bar, carousel_slider, flutter_staggered_grid_view.
+
+Build mini-projects using each category — e.g., build a photo gallery with carousel + zoom.
+
+Add polish with animations (rive/lottie), shimmer loading, and neumorphic design.
+
+Explore navigation & routing animations for seamless UX.
+

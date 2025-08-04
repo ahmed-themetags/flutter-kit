@@ -50,7 +50,7 @@ class ContactScreen extends StatelessWidget {
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.symmetric( horizontal: 25),
+                  padding: const EdgeInsets.symmetric( horizontal: 10),
                   child: Text(
                     "When used in ListView.builder inside a Column (or other scrollable widget like SingleChildScrollView), it needs help understanding its height."
                         "For that Need to Wrap it with Expanded or Flexible OR move it out of the Column.",
@@ -74,7 +74,7 @@ class ContactScreen extends StatelessWidget {
                    itemCount: contacts.length,
                    itemBuilder: (context, index) {
                      return Card(
-                       margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                        child: ListTile(
                          leading: Icon(Icons.message_rounded, color: Colors.green),
                          title: Text(contacts[index]['name']!),

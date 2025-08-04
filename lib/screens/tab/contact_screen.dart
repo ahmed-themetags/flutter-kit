@@ -11,7 +11,7 @@ class ContactScreen extends StatelessWidget {
       itemCount: contacts.length,
       itemBuilder: (context, index) {
         return Card(
-            margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: ListTile(
               leading: Icon(Icons.message_rounded, color: Colors.green),
               title: Text(contacts[index]['name']!),
