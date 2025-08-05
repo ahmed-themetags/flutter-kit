@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/screens/ecommerce_home.dart';
+import 'package:my_flutter_app/screens/home3_screen.dart';
 import 'package:my_flutter_app/screens/home_screen_2.dart';
 import 'package:my_flutter_app/screens/ui/api_call_screen.dart';
 import 'package:my_flutter_app/screens/ui/appbar_screen.dart';
@@ -29,7 +30,7 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           toolbarHeight: 80, // 👈 Increase height (default is 56.0)
-          backgroundColor: Colors.lightBlue,
+          backgroundColor: Colors.black,
           title: Column(
             children: [
               SizedBox(height: 10),
@@ -40,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                   )
               ),
 
-              SizedBox(height: 5),
+              // SizedBox(height: 5),
 
               Text('See, Learn & Implement to your project',
                   style: TextStyle(
@@ -49,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold
                   )
               ),
-              SizedBox(height: 10),
+              // SizedBox(height: 10),
             ],
           ),
         ),
@@ -57,37 +58,45 @@ class HomeScreen extends StatelessWidget {
         drawer: DrawerWidget(),
 
         body: Container(
-          color: Colors.blue,
+          color: Colors.grey[100],
           child: SingleChildScrollView(
             child: Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(0),
                 child: Column(
                   children: [
-                    SizedBox(height: 20),
-                    Center(
-                      child: const Text(
-                        'Flutter UI Kids By Ahmed',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 20),
-
                     Container(
-                      padding: EdgeInsets.all(5),
-                      width: 400,
-                      height: 150,
-                      color: Colors.blue,
+                      padding: EdgeInsets.all(0),
+                      color: Colors.grey[200],
+                      width: 450,
+                      height: 200,
                       child: Center(
                         child: CarouseWidget(),
                       ),
                     ),
+                    SizedBox(height: 25),
 
-                    SizedBox(height: 20),
+                    Center(
+                      child: const Text(
+                        "Let's Start Our Flutter Journey",
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: const Text(
+                        '-----------------',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ),
 
+                    SizedBox(height: 5),
 
                     // Scrollable Row Start
                     SingleChildScrollView(
@@ -95,14 +104,14 @@ class HomeScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           GridView.builder(
-                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                            padding: EdgeInsets.symmetric(horizontal: 0, vertical: 5),
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
                             physics: NeverScrollableScrollPhysics(),
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 10,
-                              crossAxisSpacing: 15,
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 0,
+                              crossAxisSpacing: 0,
                               // mainAxisExtent: 200,
                             ),
                             itemCount: topics.length,
@@ -116,16 +125,30 @@ class HomeScreen extends StatelessWidget {
                                   );
                                 },
                                 child: Card(
-                                  color: Colors.orange.shade700,
+                                  color: Colors.blue,
                                   child: Padding(
-                                    padding: const EdgeInsets.all(15),
+                                    padding: const EdgeInsets.all(1),
                                     child: Center(
-                                      child: Text(topic['name']!,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                        ),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text(index < 10 ? '0${(index + 1).toString()!}' : (index + 1).toString()!,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                          Text(topic['name']!,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
                                       )
                                     ),
                                   ),
@@ -163,6 +186,10 @@ List<Map<String, dynamic>> topics = [
   {
     'name': 'Scrollable Row',
     'screen': ScrollableRowScreen(),
+  },
+  {
+    'name': 'Stateful Playground App',
+    'screen': StatefulPlaygroundApp(),
   },
   {
     'name': 'Grid View Builder',

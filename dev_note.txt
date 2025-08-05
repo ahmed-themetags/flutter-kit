@@ -11,6 +11,8 @@ flutter pub get
 flutter build apk --release
 
 
+crud with riverpod
+https://chatgpt.com/share/6891d6b8-71e4-800f-9780-a7b21d5b1636
 
 Library
 ==================

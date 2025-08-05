@@ -7,40 +7,46 @@ class CarouseWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> imageUrls = [
-      'assets/images/ecommerce.jpg',
-      'assets/images/banner1.jpeg',
-      'assets/images/banner2.jpeg',
-      'assets/images/banner3.jpeg',
-      'assets/images/8.png',
-      'assets/images/9.png',
-      'assets/images/11.png',
-      'assets/images/12.png',
-      'assets/images/6.png',
-      'assets/images/n.png',
+      'assets/images/f1.avif',
+      'assets/images/f2.avif',
+      'assets/images/f3.png',
+      'assets/images/f4.png',
+      'assets/images/f5.png',
+      'assets/images/f6.jpg',
+      // 'assets/images/ecommerce.jpg',
+      // 'assets/images/banner1.jpeg',
+      // 'assets/images/banner2.jpeg',
+      // 'assets/images/banner3.jpeg',
+      // 'assets/images/8.png',
+      // 'assets/images/9.png',
+      // 'assets/images/11.png',
+      // 'assets/images/12.png',
+      // 'assets/images/6.png',
+      // 'assets/images/n.png',
     ];
 
     return CarouselSlider(
       options: CarouselOptions(
         height: 250,
         autoPlay: true,
-        enlargeCenterPage: true,
-        viewportFraction: 0.9,
-        aspectRatio: 16/9,
-        autoPlayInterval: Duration(seconds: 3),
+        enlargeCenterPage: false,       // Turn off enlargement
+        viewportFraction: 1.0,          // Full width
+        aspectRatio: 16 / 9,
+        autoPlayInterval: Duration(seconds: 2),
       ),
       items: imageUrls.map((url) {
         return Builder(
           builder: (BuildContext context) {
             return Container(
-              margin: EdgeInsets.symmetric(horizontal: 5),
+              margin: EdgeInsets.all(1),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(5),
                 color: Colors.grey[200],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(5),
                 child: Image.asset(
-                  url, // make sure 'url' is a local asset path
+                  url,
                   fit: BoxFit.cover,
                   width: double.infinity,
                 ),
@@ -50,5 +56,6 @@ class CarouseWidget extends StatelessWidget {
         );
       }).toList(),
     );
+
   }
 }

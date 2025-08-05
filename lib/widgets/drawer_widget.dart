@@ -13,32 +13,32 @@ class DrawerWidget extends StatelessWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.deepOrange,
+              color: Colors.blue,
             ),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 50,
+                    radius: 30,
                     backgroundImage: AssetImage('assets/images/ahmed.jpeg'),
                   ),
                   SizedBox(height: 5),
                   Text(
                     'Ahmed Ullah',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
-                  // Text(
-                  //   'ahmedsohelcu@gmail.com',
-                  //   style: TextStyle(
-                  //     fontSize: 14,
-                  //     color: Colors.white70,
-                  //   ),
-                  // ),
+                  Text(
+                    'ahmedsohelcu@gmail.com',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white70,
+                    ),
+                  ),
                 ],
               ),
             ),
