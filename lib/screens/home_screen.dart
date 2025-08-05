@@ -15,6 +15,9 @@ import 'package:my_flutter_app/screens/ui/list_view_screen.dart';
 import 'package:my_flutter_app/screens/ui/my_carousel_slider.dart';
 import 'package:my_flutter_app/screens/ui/scrollable_screen.dart';
 import 'package:my_flutter_app/screens/ui/stateful_widgets_screen.dart';
+import 'package:my_flutter_app/widgets/carouse_widget.dart';
+import 'package:my_flutter_app/widgets/drawer_widget.dart';
+import 'package:my_flutter_app/widgets/navigation_bar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,90 +28,123 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.green,
-          title: Text('Flutter UI Kids',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold
-              )
+          toolbarHeight: 80, // 👈 Increase height (default is 56.0)
+          backgroundColor: Colors.lightBlue,
+          title: Column(
+            children: [
+              SizedBox(height: 10),
+              Text('Flutter UI Kids',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold
+                  )
+              ),
+
+              SizedBox(height: 5),
+
+              Text('See, Learn & Implement to your project',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold
+                  )
+              ),
+              SizedBox(height: 10),
+            ],
           ),
         ),
 
-        body: SingleChildScrollView(
-          child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                children: [
-                  SizedBox(height: 20),
-                  Center(
-                    child: const Text(
-                      'Flutter UI Kids By Ahmed',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold
+        drawer: DrawerWidget(),
+
+        body: Container(
+          color: Colors.blue,
+          child: SingleChildScrollView(
+            child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Center(
+                      child: const Text(
+                        'Flutter UI Kids By Ahmed',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Divider(),
-                  SizedBox(height: 10),
+                    SizedBox(height: 20),
+
+                    Container(
+                      padding: EdgeInsets.all(5),
+                      width: 400,
+                      height: 150,
+                      color: Colors.blue,
+                      child: Center(
+                        child: CarouseWidget(),
+                      ),
+                    ),
+
+                    SizedBox(height: 20),
 
 
-                  // Scrollable Row Start
-                  SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      children: [
-                        GridView.builder(
-                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          physics: NeverScrollableScrollPhysics(),
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 15,
-                            // mainAxisExtent: 200,
-                          ),
-                          itemCount: topics.length,
-                          itemBuilder: (context, index) {
-                            var topic = topics[index]!;
+                    // Scrollable Row Start
+                    SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: [
+                          GridView.builder(
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            physics: NeverScrollableScrollPhysics(),
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 15,
+                              // mainAxisExtent: 200,
+                            ),
+                            itemCount: topics.length,
+                            itemBuilder: (context, index) {
+                              var topic = topics[index]!;
 
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(context,MaterialPageRoute(
-                                    builder: (context) => topic['screen']),
-                                );
-                              },
-                              child: Card(
-                                color: Colors.orange.shade700,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(15),
-                                  child: Center(
-                                    child: Text(topic['name']!,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                      ),
-                                    )
+                              return InkWell(
+                                onTap: () {
+                                  Navigator.push(context,MaterialPageRoute(
+                                      builder: (context) => topic['screen']),
+                                  );
+                                },
+                                child: Card(
+                                  color: Colors.orange.shade700,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15),
+                                    child: Center(
+                                      child: Text(topic['name']!,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                        ),
+                                      )
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  // Scrollable Row Start
+                    // Scrollable Row Start
 
-                ],
+                  ],
+                ),
               ),
-            ),
+          ),
         ),
-        ),
+        bottomNavigationBar: NavigationBarBarWidget(),
+      ),
     );
   }
 }
@@ -123,8 +159,7 @@ class HomeScreen extends StatelessWidget {
 // https://restcountries.com/v3.1/independent?status=true
 
 
-List<Map<String
-, dynamic>> topics = [
+List<Map<String, dynamic>> topics = [
   {
     'name': 'Scrollable Row',
     'screen': ScrollableRowScreen(),
