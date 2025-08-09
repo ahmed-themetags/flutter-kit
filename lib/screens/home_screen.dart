@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter_app/screens/ecommerce_home.dart';
 import 'package:my_flutter_app/screens/home3_screen.dart';
 import 'package:my_flutter_app/screens/home_screen_2.dart';
+import 'package:my_flutter_app/screens/tab/form_tab_screen.dart';
+import 'package:my_flutter_app/screens/ui/ButtonScreen.dart';
+import 'package:my_flutter_app/screens/ui/formScreen.dart';
 import 'package:my_flutter_app/screens/ui/api_call_screen.dart';
 import 'package:my_flutter_app/screens/ui/appbar_screen.dart';
 import 'package:my_flutter_app/screens/ui/card_screen.dart';
@@ -218,6 +221,14 @@ List<Map<String, dynamic>> topics = [
   {
     'name': 'List View Builder',
     'screen': ListViewBuilderScreen(), // Replace with actual screen widget
+  },
+  {
+    'name': 'Form',
+    'screen': FormScreen(), // Replace with actual screen widget
+  },
+  {
+    'name': 'Button',
+    'screen': ButtonScreen(), // Replace with actual screen widget
   },
   {
     'name': 'Contact List',
