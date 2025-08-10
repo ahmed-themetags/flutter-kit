@@ -12,7 +12,19 @@ class _NavigationRailScreenState extends State<NavigationRailScreen>
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    Center(child: Text("🏠 Home Page", style: TextStyle(fontSize: 24))),
+    Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: 100,
+          width: 100,
+          color: Colors.yellow,
+          padding: const EdgeInsets.all(8),
+          child: const Center(child: Text("Home Page", style: TextStyle(fontSize: 24))),
+        ),
+      ],
+    ),
+
     Center(child: Text("❤️ Favourite Page", style: TextStyle(fontSize: 24))),
     Center(child: Text("⚙ Settings Page", style: TextStyle(fontSize: 24))),
     Center(child: Text("🔍 Search Page", style: TextStyle(fontSize: 24))),
