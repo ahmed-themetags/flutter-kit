@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
-class NavigationBarBarWidget extends StatelessWidget {
-  const NavigationBarBarWidget({super.key});
+class NavigationBarWidget extends StatelessWidget {
+  const NavigationBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -23,7 +23,7 @@ class CurveNavigationScreen extends StatelessWidget {
       ),
 
       // Curved Navigation Bar
-      bottomNavigationBar: NavigationBarBarWidget(),
+      bottomNavigationBar: NavigationBarWidget(),
     );
   }
 }

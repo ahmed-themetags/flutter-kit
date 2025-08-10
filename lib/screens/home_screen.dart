@@ -4,6 +4,7 @@ import 'package:my_flutter_app/screens/home3_screen.dart';
 import 'package:my_flutter_app/screens/home_screen_2.dart';
 import 'package:my_flutter_app/screens/tab/form_tab_screen.dart';
 import 'package:my_flutter_app/screens/ui/ButtonScreen.dart';
+import 'package:my_flutter_app/screens/ui/bottom_navigation_bar_screen.dart';
 import 'package:my_flutter_app/screens/ui/formScreen.dart';
 import 'package:my_flutter_app/screens/ui/api_call_screen.dart';
 import 'package:my_flutter_app/screens/ui/appbar_screen.dart';
@@ -17,6 +18,7 @@ import 'package:my_flutter_app/screens/ui/grid_view_screen.dart';
 import 'package:my_flutter_app/screens/ui/list_view_builder_screen.dart';
 import 'package:my_flutter_app/screens/ui/list_view_screen.dart';
 import 'package:my_flutter_app/screens/ui/my_carousel_slider.dart';
+import 'package:my_flutter_app/screens/ui/navigation_rail_screen.dart';
 import 'package:my_flutter_app/screens/ui/scrollable_screen.dart';
 import 'package:my_flutter_app/screens/ui/stateful_widgets_screen.dart';
 import 'package:my_flutter_app/widgets/carouse_widget.dart';
@@ -169,7 +171,7 @@ class HomeScreen extends StatelessWidget {
               ),
           ),
         ),
-        bottomNavigationBar: NavigationBarBarWidget(),
+        bottomNavigationBar: NavigationBarWidget(),
       ),
     );
   }
@@ -186,6 +188,10 @@ class HomeScreen extends StatelessWidget {
 
 
 List<Map<String, dynamic>> topics = [
+  {
+    'name': 'Navigation Rail (Tablet/Desktop style)',
+    'screen': NavigationRailScreen(),
+  },
   {
     'name': 'Scrollable Row',
     'screen': ScrollableRowScreen(),
@@ -206,6 +212,10 @@ List<Map<String, dynamic>> topics = [
     'name': 'Curve Navigation',
     'screen': CurveNavigationScreen(),
   },
+  // {
+  //   'name': 'Bottom Navigation Bar',
+  //   'screen': BottomNavigationBarScreen(),
+  // },
   {
     'name': 'Drawer',
     'screen': DrawerScreen(),
