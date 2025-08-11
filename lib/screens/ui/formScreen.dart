@@ -23,7 +23,6 @@ class _FormScreenState extends State<FormScreen> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                // Name input
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Name',
