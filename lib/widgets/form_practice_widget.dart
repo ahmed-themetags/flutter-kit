@@ -8,75 +8,173 @@ class FormPracticeWidget extends StatefulWidget {
 }
 
 class _FormPracticeWidgetState extends State<FormPracticeWidget> {
+  final _formKey = GlobalKey<FormState>();
+  String? _name; // variable to store input value
+  String? _email;
+  String? _phone;
+
+  // Change this to a list of maps to store multiple entries
+  final List<Map<String, String?>> _formValues = [
+    {
+      'name': 'Ahmed Ullah',
+      'email': 'ahmedullah@test.com',
+      'phone': '01840 149651',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.white,
-      width: double.infinity,
-      height: double.infinity,
-      padding: const EdgeInsets.all(20),
-      // color: Colors.white,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-             Card(
-               child: Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                 child: Column(
-                   children: [
-                     SizedBox(height: 10),
+    return Scaffold(
+      // Wrapped in Scaffold for proper UI
+      // appBar: AppBar(title: const Text("Contact Form")),
+      backgroundColor: Colors.blueAccent,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        padding: const EdgeInsets.all(10),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 5),
+                      const Text(
+                        "Add Contact",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 20),
 
-                     Text("Form Practice", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                     SizedBox(height: 20),
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Enter name',
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your name';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) => _name = value,
+                            ),
 
-                     Form(
-                       child: Column(
-                         children: [
-                           TextFormField(
-                             decoration: const InputDecoration(
-                               border: OutlineInputBorder(),
-                               labelText: 'Enter your name',
-                             ),
-                           ),
-                           SizedBox(height: 20),
+                            const SizedBox(height: 20),
 
-                           TextFormField(
-                             decoration: const InputDecoration(
-                               border: OutlineInputBorder(),
-                               labelText: 'Enter your email',
-                             ),
-                           ),
-                           SizedBox(height: 20),
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Enter your email',
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your email';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) => _email = value,
+                            ),
 
-                           TextFormField(
-                             decoration: const InputDecoration(
-                               border: OutlineInputBorder(),
-                               labelText: 'Enter your Phone Number',
-                             ),
-                           ),
-                         ],
-                       ),
-                     ),
+                            const SizedBox(height: 20),
 
-                     SizedBox(height: 20),
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Enter Phone Number',
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your phone number';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) => _phone = value,
+                            ),
+                          ],
+                        ),
+                      ),
 
-                     ElevatedButton(
-                       onPressed: () {
-                         // Your submit logic here
-                         print('Submit button pressed');
-                       },
-                       child: const Text('Submit',
-                         style: TextStyle(
-                           color: Colors.green,
-                           fontSize: 16,
-                           fontWeight: FontWeight.bold,),
-                       ),
-                     ),
-                   ],
-                 ),
-               ),
-             )
-          ],
+                      const SizedBox(height: 20),
+
+                      ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
+
+                            setState(() {
+                              // Add the entry as a Map (no casting!)
+                              _formValues.add({
+                                'name': _name,
+                                'email': _email,
+                                'phone': _phone,
+                              });
+                            });
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Hello, $_name!')),
+                            );
+
+                            // Clear form fields after submit
+                            _formKey.currentState!.reset();
+                          }
+                        },
+                        child: const Text(
+                          'Submit',
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+
+                      const SizedBox(height: 20),
+
+
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 20),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Column(
+                    children: [
+                      const Text(
+                        "Contact List",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 20),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: _formValues.length,
+                        itemBuilder: (context, index) {
+                          // final entry = _formValues[index];
+                          final reversedIndex = _formValues.length - 1 - index;
+                          final entry = _formValues[reversedIndex];
+                          return ListTile(
+                            title: Text(entry['name'] ?? ''),
+                            subtitle: Text(entry['email'] ?? ''),
+                            trailing: Text(entry['phone'] ?? ''),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              )
+
+            ],
+          ),
         ),
       ),
     );
