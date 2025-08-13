@@ -1,16 +1,43 @@
-# my_flutter_app
+# 🛍️ Flutter E-commerce App with Riverpod State Management
 
-A new Flutter project.
+A scalable **Flutter** e-commerce project structure using **Riverpod** state management, featuring reusable modules for **Product**, **Brand**, and **Category** CRUD operations with API integration.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📂 Project Structure
 
-A few resources to get you started if this is your first Flutter project:
+lib/
+│
+├── core/
+│ ├── config/ # API endpoints, constants, themes
+│ ├── services/ # API client, interceptors, shared utilities
+│ ├── widgets/ # Reusable UI widgets (buttons, forms, etc.)
+│ └── exceptions/ # API and app-specific exceptions
+│
+├── features/
+│ ├── product/
+│ │ ├── data/
+│ │ │ ├── models/ # Product model
+│ │ │ ├── product_api.dart
+│ │ ├── providers/ # Riverpod providers for state & async logic
+│ │ ├── views/ # Screens & UI
+│ │ └── widgets/ # Product-specific widgets
+│ │
+│ ├── brand/
+│ │ ├── data/
+│ │ │ ├── models/ # Brand model
+│ │ │ ├── brand_api.dart
+│ │ ├── providers/
+│ │ ├── views/
+│ │ └── widgets/
+│ │
+│ ├── category/
+│ │ ├── data/
+│ │ │ ├── models/ # Category model
+│ │ │ ├── category_api.dart
+│ │ ├── providers/
+│ │ ├── views/
+│ │ └── widgets/
+│
+└── main.dart
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

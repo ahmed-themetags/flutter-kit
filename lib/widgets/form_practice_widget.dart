@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // <-- make sure to import this for inputFormatters
 
 class FormPracticeWidget extends StatefulWidget {
   const FormPracticeWidget({super.key});
@@ -12,6 +13,8 @@ class _FormPracticeWidgetState extends State<FormPracticeWidget> {
   String? _name; // variable to store input value
   String? _email;
   String? _phone;
+  String? _gender; // variable to store input value for gender;
+  bool _acceptTerms = false;
 
   // Change this to a list of maps to store multiple entries
   final List<Map<String, String?>> _formValues = [
@@ -81,6 +84,7 @@ class _FormPracticeWidgetState extends State<FormPracticeWidget> {
                               onSaved: (value) => _email = value,
                             ),
 
+
                             const SizedBox(height: 20),
 
                             TextFormField(
@@ -95,7 +99,23 @@ class _FormPracticeWidgetState extends State<FormPracticeWidget> {
                                 return null;
                               },
                               onSaved: (value) => _phone = value,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: [FilteringTextInputFormatter.digitsOnly], // allows digits only input
                             ),
+
+                            // Checkbox for Accept Terms
+                            CheckboxListTile(
+                              title: const Text('Accept Terms and Conditions'),
+                              value: _acceptTerms,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  _acceptTerms = value ?? false;
+                                });
+                              },
+                              controlAffinity: ListTileControlAffinity.leading,
+                            ),
+
+                            Text(_acceptTerms ? 'Accepted' : 'Not Accepted'),
                           ],
                         ),
                       ),

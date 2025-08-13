@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_flutter_app/screens/home_screen.dart';
 
 void main() {
-  runApp(CUTrainScheduleApp());
+  runApp(ProviderScope(child: CUTrainScheduleApp()));
 }
 
 class CUTrainScheduleApp extends StatelessWidget {
@@ -12,9 +13,11 @@ class CUTrainScheduleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter UI UIKids',
-      theme: ThemeData(primarySwatch: Colors.teal),
       color: Colors.teal.shade200,
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
       home: HomeScreen()
     );
   }
