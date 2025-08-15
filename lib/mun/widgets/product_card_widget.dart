@@ -7,7 +7,7 @@ class ProductCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      elevation: 0.5,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       child: Container(
         width: 160, // fixed width
@@ -21,7 +21,7 @@ class ProductCardWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
               child: Image.network(
                 imageUrl,
-                height: 100,
+                height: 110,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),

@@ -15,19 +15,19 @@ class ShopCategoryCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 7,
+      elevation: 0.5,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ClipOval(
                 child: Image.network(
                   imageUrl, // use passed parameter instead of hardcoded link
-                  height: 70,
-                  width: 80,
+                  height: 80,
+                  width: 85,
                   fit: BoxFit.cover,
                 ),
               ),

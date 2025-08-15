@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/mun/widgets/carousel_with_dots.dart';
+import 'package:my_flutter_app/mun/widgets/mun_home_widget.dart';
+import 'package:my_flutter_app/mun/widgets/our_popular_product_widget.dart';
 import 'package:my_flutter_app/mun/widgets/product_card_widget.dart';
+import 'package:my_flutter_app/mun/widgets/shop_by_category.dart';
 import 'package:my_flutter_app/mun/widgets/shop_category_card_widget.dart';
+import 'package:my_flutter_app/mun/widgets/shop_widget.dart';
+import 'package:my_flutter_app/mun/widgets/weekly_best_deal_products.dart';
 
-class MunHomeScreen extends StatelessWidget {
+class MunHomeScreen extends StatefulWidget {
   const MunHomeScreen({super.key});
+
+  @override
+  State<MunHomeScreen> createState() => _MunHomeScreenState();
+}
+
+class _MunHomeScreenState extends State<MunHomeScreen> {
+  int _currentIndex = 0;
+
+  final List<Widget> _screens = [
+    MunHomeWidget(),
+    const Text('home 2'),
+    const Text('home 3'),
+    const Text('home 4'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -61,269 +80,172 @@ class MunHomeScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
-
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10),
-                const CarouselWithDots(),
-
-                const SizedBox(height: 35),
-
-                // weekly best deals and view all with arrow
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Weekly Best Deals",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.purple,
+              ),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    child: Icon(
+                      Icons.person_2,
+                      size: 40,
+                      color: Colors.white,
                     ),
-                    Row(
-                      children: [
-                        const Text(
-                          "View All",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purple,
-                          ),
-                        ),
-                        const SizedBox(width: 6),
-
-                        Transform.rotate(
-                          angle: 45 * 3.1415926535 / 180, // rotate 90 degrees clockwise
-                          child: const Icon(
-                            Icons.arrow_upward,
-                            color: Colors.purple,
-                            size: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-
-                // Scrollable  weekly best deals products
-                // Add more widgets below
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 8), // optional left padding
-                      ProductCardWidget(
-                        imageUrl: 'http://mun.market/uploads/media_manager/user_id_268/2025_05_14_mun_africa_1747220362w5n2F1.webp',
-                      ),
-                      SizedBox(width: 10),
-                      ProductCardWidget(
-                        imageUrl: 'http://mun.market/uploads/shop/user_268/2025_04_25_mun_africa_1745598222U1F7U4.webp',
-                      ),
-                      SizedBox(width: 10),
-                      ProductCardWidget(
-                        imageUrl: 'http://mun.market/uploads/media_manager/user_id_268/2025_05_14_mun_africa_1747218542y7n9S1.webp',
-                      ),
-                      SizedBox(width: 10),
-                      ProductCardWidget(
-                        imageUrl: 'http://mun.market/uploads/media_manager/user_id_268/2025_05_14_mun_africa_1747209524J2V9K6.webp',
-                      ),
-                      SizedBox(width: 10),
-                      ProductCardWidget(
-                        imageUrl: 'http://mun.market/uploads/media_manager/user_id_268/2025_05_14_mun_africa_1747219763G9M4S2.webp',
-                      ),
-                      SizedBox(width: 10),
-                      ProductCardWidget(
-                        imageUrl: 'http://mun.market/uploads/media_manager/user_id_268/2025_05_14_mun_africa_1747224867g4T3r1.webp',
-                      ),
-                    ],
                   ),
-                ),
 
-                SizedBox(height: 40),
 
-                //--------------------------
-                // Shop by category
-                //--------------------------
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Shop By Categories",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+
+                  SizedBox(width: 16),
+                  Text(
+                    'Login Or Sign Up',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Row(
-                      children: [
-                        const Text(
-                          "View All",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purple,
-                          ),
-                        ),
-                        const SizedBox(width: 6),
-
-                        Transform.rotate(
-                          angle: 45 * 3.1415926535 / 180, // rotate 90 degrees clockwise
-                          child: const Icon(
-                            Icons.arrow_upward,
-                            color: Colors.purple,
-                            size: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ShopCategoryCardWidget(
-                          imageUrl: 'http://mun.market/uploads/media_manager/user_id_1/2025_04_29_mun_africa_1745927695M8M4v6.webp',
-                          category: 'Category',
-                          quantity: 10,
-                      ),
-                      SizedBox(width: 10),
-                      ShopCategoryCardWidget(
-                          imageUrl: 'http://mun.market/uploads/media_manager/user_id_1/2025_04_29_mun_africa_1745929560R8X0b3.webp',
-                          category: 'Category',
-                          quantity: 10,
-                      ),
-                      SizedBox(width: 10),
-                      ShopCategoryCardWidget(
-                          imageUrl: 'http://mun.market/uploads/media_manager/user_id_1/2025_04_29_mun_africa_1745929753W7Y2P7.webp',
-                          category: 'Category',
-                          quantity: 10,
-                      ),
-                      SizedBox(width: 10),
-                      ShopCategoryCardWidget(
-                          imageUrl: 'http://mun.market/uploads/media_manager/user_id_1/2025_04_29_mun_africa_1745929995Z4w9e3.webp',
-                          category: 'Category',
-                          quantity: 10,
-                      ),
-                      SizedBox(width: 10),
-                      ShopCategoryCardWidget(
-                          imageUrl: 'http://mun.market/uploads/media_manager/user_id_1/2025_05_03_mun_africa_1746257706m9J6X0.webp',
-                          category: 'Category',
-                          quantity: 10,
-                      ),
-                      SizedBox(width: 10),
-                      ShopCategoryCardWidget(
-                          imageUrl: 'http://mun.market/uploads/media_manager/user_id_1/2025_05_03_mun_africa_1746258252W8Z6V0.webp',
-                          category: 'Category',
-                          quantity: 10,
-                      ),
-                    ],
                   ),
-                ),
-
-
-                SizedBox(height: 40),
-                //-----------------------
-                //  Our products start
-                //-----------------------
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Our Popular Products",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          "View All",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purple,
-                          ),
-                        ),
-                        const SizedBox(width: 6),
-
-                        Transform.rotate(
-                          angle: 45 * 3.1415926535 / 180, // rotate 90 degrees clockwise
-                          child: const Icon(
-                            Icons.arrow_upward,
-                            color: Colors.purple,
-                            size: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-
-                // Scrollable  weekly best deals products
-                // Add more widgets below
-
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 8), // optional left padding
-                      Column(
-                        children: [
-                          ProductCardWidget(
-                            imageUrl: 'http://mun.market/uploads/media_manager/user_id_268/2025_05_14_mun_africa_1747220362w5n2F1.webp',
-                          ),
-                          const SizedBox(height: 10),
-                          ProductCardWidget(
-                            imageUrl: 'http://mun.market/uploads/shop/user_268/2025_04_25_mun_africa_1745598222U1F7U4.webp',
-                          ),
-                        ],
-                      ),
-                      const SizedBox(width: 10),
-                      Column(
-                        children: [
-                          ProductCardWidget(
-                            imageUrl: 'http://mun.market/uploads/media_manager/user_id_268/2025_05_14_mun_africa_1747218542y7n9S1.webp',
-                          ),
-                          const SizedBox(height: 10),
-                          ProductCardWidget(
-                            imageUrl: 'http://mun.market/uploads/media_manager/user_id_268/2025_05_14_mun_africa_1747209524J2V9K6.webp',
-                          ),
-                        ],
-                      ),
-                      const SizedBox(width: 10),
-                      Column(
-                        children: [
-                          ProductCardWidget(
-                            imageUrl: 'http://mun.market/uploads/media_manager/user_id_268/2025_05_14_mun_africa_1747219763G9M4S2.webp',
-                          ),
-                          const SizedBox(height: 10),
-                          ProductCardWidget(
-                            imageUrl: 'http://mun.market/uploads/media_manager/user_id_268/2025_05_14_mun_africa_1747224867g4T3r1.webp',
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-
-
-                SizedBox(height: 40),
-              ],
+                ],
+              ),
             ),
-          ),
+            ListTile(
+              title: Row(
+                children: [
+                  Icon(
+                    Icons.home,
+                    color: Colors.grey[600],
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Home',
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              trailing: Icon(Icons.keyboard_arrow_right_sharp, color: Colors.black),
+              onTap: () {
+                // Handle item 1 tap
+              },
+            ),
+            ListTile(
+              title: Row(
+                children: [
+                  Icon(
+                    Icons.store_mall_directory_outlined,
+                    color: Colors.grey[600],
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Shop',
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              trailing: Icon(Icons.keyboard_arrow_right_sharp, color: Colors.black),
+              onTap: () {
+                // Handle item 1 tap
+              },
+            ),
+            ListTile(
+              title: Row(
+                children: [
+                  Icon(
+                    Icons.shopping_basket_outlined,
+                    color: Colors.grey[600],
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    "Housewife's Basket",
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              trailing: Icon(Icons.keyboard_arrow_right_sharp, color: Colors.black),
+              onTap: () {
+                // Handle item 1 tap
+              },
+            ),
+
+            Divider(),
+
+            ListTile(
+              title: Row(
+                children: [
+                  Icon(
+                    Icons.shopping_basket_outlined,
+                    color: Colors.grey[600],
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    "Campaign",
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              trailing: Icon(Icons.keyboard_arrow_right_sharp, color: Colors.black),
+              onTap: () {
+                // Handle item 1 tap
+              },
+            ),
+            ListTile(
+              title: Row(
+                children: [
+                  Icon(
+                    Icons.store_mall_directory_outlined,
+                    color: Colors.grey[600],
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    "Best Merchants",
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              trailing: Icon(Icons.keyboard_arrow_right_sharp, color: Colors.black),
+              onTap: () {
+                // Handle item 1 tap
+              },
+            ),
+          ],
         ),
-      )
+      ),
+      body: _screens[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.purple),label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search, color: Colors.purple), label: 'Search', ),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite, color: Colors.purple), label: 'Favorites'),
+          BottomNavigationBarItem(icon: Icon(Icons.person, color: Colors.purple,), label: 'Profile'),
+        ],
+      ),
     );
   }
+
+
 }
