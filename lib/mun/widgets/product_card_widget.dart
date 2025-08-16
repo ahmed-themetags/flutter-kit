@@ -54,14 +54,23 @@ class ProductCardWidget extends StatelessWidget {
             ),
             // const Spacer(),
             SizedBox(height: 10),
-            const Text(
-              '\$59.99',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-                color: Colors.purple,
-              ),
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '\$59.99',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.purple,
+                  ),
+                ),
+                Icon(
+                  Icons.favorite_border_outlined,
+                  color: Colors.purple,
+                )
+              ],
+            )
           ],
         ),
       ),
